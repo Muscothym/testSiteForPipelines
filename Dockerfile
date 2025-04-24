@@ -1,9 +1,8 @@
-FROM nginx
+FROM nginx:alpine
+COPY ./Webserver/html /usr/share/nginx/html/
 
-COPY ngwrap.sh /
+COPY --chmod=0755 .ngwrap.sh /
 
 COPY html /usr/share/nginx/html
-
-RUN ["chmod", "+x", "/ngwrap.sh"]
 
 CMD ["./ngwrap.sh"]
